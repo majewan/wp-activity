@@ -193,18 +193,10 @@ if ($options_act['act_log_failures'] ) {
   add_action('wp_login_failed', 'act_login_failed');
 }
 
-function act_header() {
-  $altcss = TEMPLATEPATH.'/wp-activity.css';
-  echo '<link type="text/css" rel="stylesheet" href="';
-  if (@file_exists($altcss)) {
-      echo get_bloginfo('stylesheet_directory').'/';
-  } else {
-      echo ACT_URL;
-  }
-  echo 'wp-activity.css" />';
-
+function act_default_styles() {
+  global $act_plugin_version;
+  wp_enqueue_style('act_main_css', ACT_URL .'wp-activity.css', array(), $act_plugin_version, 'screen');
 }
-add_action('wp_head', 'act_header');
 
 function act_profile_option() {
   global $wpdb, $user_ID, $options_act;
@@ -447,9 +439,10 @@ function act_stream_user($act_user='') {
 }
 
 function act_stream_shortcode ($attr) {
+  act_default_styles();
     $attr = shortcode_atts(array('number'   => '-1',
                                  'title'    => '',), $attr);
-		if ( in_the_loop() ) {
+    if ( in_the_loop() ) {
 			return act_stream($attr['number'], $attr['title'], true, '');
 		} else {
 			return null;

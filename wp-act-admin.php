@@ -45,7 +45,6 @@ add_filter("plugin_action_links_wp-activity/wp-activity.php", 'act_plugin_action
 
 //menus and scripts loading
 function act_admin_menu(){
-  add_action( 'admin_head', 'act_header' );
   add_menu_page('WP-Activity', 'WP-Activity', 'administrator', 'act_activity', 'act_admin_activity', 'div');
   $act_log_page = add_submenu_page( 'act_activity' , __('Activity Log', 'wp-activity'), __('Activity Log', 'wp-activity'), 'administrator', 'act_activity', 'act_admin_activity');
   $act_stats_page = add_submenu_page( 'act_activity' , __('Activity Stats', 'wp-activity'), __('Activity Stats', 'wp-activity'), 'administrator', 'act_stats', 'act_admin_stats');
@@ -53,10 +52,11 @@ function act_admin_menu(){
   add_action('admin_print_styles-' . $act_log_page, 'act_log_scripts');
   add_action('admin_print_styles-' . $act_stats_page, 'act_stats_scripts');
   add_action('admin_print_styles-' . $act_admin_page, 'act_admin_scripts');
-
 }
 add_action('admin_menu', 'act_admin_menu');
 add_action('wp_ajax_act_get_users', 'act_get_users');
+
+add_action( 'admin_enqueue_scripts', 'act_default_styles');
 
 function act_stats_scripts(){
   global $wp_version, $is_IE;
