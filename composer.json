@@ -1,5 +1,5 @@
 {
-  "name"       : "WP-Activity",
+  "name"       : "wp-activity",
   "description": "Monitor and display blog members activity ; track and blacklist unwanted login attemps.",
   "homepage"   : "https://wordpress.org/support/plugin/wp-activity",
   "type"       : "wordpress-plugin",
