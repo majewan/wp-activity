@@ -1,0 +1,20 @@
+{
+  "name"       : "WP-Activity",
+  "description": "Monitor and display blog members activity ; track and blacklist unwanted login attemps.",
+  "homepage"   : "https://wordpress.org/support/plugin/wp-activity",
+  "type"       : "wordpress-plugin",
+  "license"    : "GPL-2.0+",
+  "authors"    : [
+    {
+      "name"    : "Dric",
+      "homepage": "http://www.driczone.net/"
+    },
+    {
+      "name"    : "HugoPoi",
+      "homepage": "http://blog.hugopoi.net/"
+    }
+  ],
+  "require": {
+    "composer/installers": "~1.0"
+  }
+}
