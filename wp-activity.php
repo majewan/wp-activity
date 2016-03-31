@@ -195,7 +195,7 @@ if ($options_act['act_log_failures'] ) {
 
 function act_default_styles() {
   global $act_plugin_version;
-  wp_enqueue_style('act_main_css', ACT_URL .'wp-activity.css', array(), $act_plugin_version, 'screen');
+  wp_enqueue_style('act_main_css', plugins_url('wp-activity/wp-activity.css'), array(), $act_plugin_version, 'screen');
 }
 
 function act_profile_option() {
@@ -883,7 +883,7 @@ function nicetime($posted_date, $admin=false, $nohour=false) {
     return sprintf(__('%s ago', 'wp-activity'), $relative_date);
 }
 if (is_admin()) {
-    require_once(WP_PLUGIN_DIR.'/'.ACT_DIR.'/wp-act-admin.php');
+    require_once('wp-act-admin.php');
 }
 
 add_action( 'widgets_init', 'WPActivity_load_widgets' );
